@@ -237,12 +237,12 @@ public class SimuladorUrgenciaLab {
     static class SimuladorUrgencia {
         private Hospital hospital;
         private GeneradorPacientes generador;
-        private long tiempoBase; // Nuevo: tiempo base de la simulación
+        private long tiempoBase; 
 
         public SimuladorUrgencia() {
             this.hospital = new Hospital();
             this.generador = new GeneradorPacientes();
-            this.tiempoBase = System.currentTimeMillis(); // Se fija al crear el simulador
+            this.tiempoBase = System.currentTimeMillis(); 
         }
 
         public void registrarPaciente(String nombre, String apellido, String ID, int categoria, long tiempoLlegada, String estado, String area) {
@@ -303,7 +303,7 @@ public class SimuladorUrgenciaLab {
             for (int i = 0; i < cantidad; i++) {
                 Paciente atendido = atenderSiguiente();
                 if (atendido != null) {
-                    atendido.setTiempoAtencion(tiempoSimulado); // Marca el tiempo de atención simulado
+                    atendido.setTiempoAtencion(tiempoSimulado); 
                     registrarPacienteAtendido(atendido);
                     atendido.registrarCambio("El paciente " + atendido.getID() + " ha sido atendido en el área " + atendido.getArea());
                 }
@@ -315,7 +315,7 @@ public class SimuladorUrgenciaLab {
             int contadorNuevosIngresos = 0;
 
             for (int minutoActual = 0; minutoActual < tiempoSimulacion; minutoActual++) {
-                long tiempoSimulado = tiempoBase + minutoActual * 60 * 1000; // Tiempo simulado en ms
+                long tiempoSimulado = tiempoBase + minutoActual * 60 * 1000; 
 
                 if (minutoActual % 10 == 0 && contadorPacientes < pacientePorDia) {
                     Paciente nuevoPaciente = generador.generarPacienteAleatorio(minutoActual, tiempoSimulado);
